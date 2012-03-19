@@ -8,27 +8,27 @@ pundle.js
 
 1. Setup Pundle
 
-   ```
-   $ git clone https://github.com/maksimr/pundle.git ~/.pentadactyl/plugin/pundle
-     ```
+```
+$ git clone https://github.com/maksimr/pundle.git ~/.pentadactyl/plugin/pundle
+ ```
 
 2. Configure pundles:
 
-  Sample `.pentadactylrc`:
+Sample `.pentadactylrc`:
 
-     ```vim
-     " set bundle
-     Bundle maksimr/beautiful-translate
-     ```
+```vim
+ " set bundle
+ Bundle maksimr/beautiful-translate
+```
 
-  Commands
+Commands
 
 
-     ```vim
-     " :BundleInstall              - install bundles
-     " :BundleUpdate               - update bundles
-     " :BundleRemove bundleName    - remove bundle
-     ```
+```vim
+ " :BundleInstall              - install bundles
+ " :BundleUpdate               - update bundles
+ " :BundleRemove bundleName    - remove bundle
+```
 
 
 Git Installation
