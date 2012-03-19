@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  var Bundle, BundleInstall, BundleRemove, BundleUpdate, bundleRoot, pundle;
+  var Bundle, BundleInstall, BundleRemove, bundleRoot, pundle;
 
   bundleRoot = io.getRuntimeDirectories("plugins").shift().path;
 
@@ -35,13 +35,11 @@
   BundleInstall = function(args) {
     var packName;
     packName = args.toString();
-    return pundle.install(packName);
-  };
-
-  BundleUpdate = function(args) {
-    var packName;
-    packName = args.toString();
-    return pundle.update(packName);
+    if (args.bang) {
+      return pundle.update(packName);
+    } else {
+      return pundle.install(packName);
+    }
   };
 
   BundleRemove = function(args) {
@@ -146,11 +144,11 @@
 
   group.commands.add(["Bundle", "bund"], pundle.info.description, Bundle);
 
-  group.commands.add(["BundleInstall", "bundi"], pundle.info.description, BundleInstall);
-
-  group.commands.add(["BundleUpdate", "bundu"], pundle.info.description, BundleUpdate, {
-    literal: 0,
-    completer: pundle.completer
+  group.commands.add(["BundleInstall", "bundi"], pundle.info.description, BundleInstall, {
+    bang: true,
+    completer: function(context, args) {
+      if (args.bang) return pundle.completer(context, args);
+    }
   });
 
   group.commands.add(["BundleRemove", "bundr"], pundle.info.description, BundleRemove, {

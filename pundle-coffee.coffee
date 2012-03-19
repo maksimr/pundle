@@ -36,11 +36,8 @@ Bundle.packages = []
 
 BundleInstall = (args)->
   packName = args.toString()
-  pundle.install(packName)
 
-BundleUpdate = (args)->
-  packName = args.toString()
-  pundle.update(packName)
+  if args.bang then pundle.update(packName) else pundle.install(packName)
 
 BundleRemove = (args)->
   packName = args.toString()
@@ -120,10 +117,9 @@ pundle =
 #DECLARE PLUGIN
 group.commands.add ["Bundle", "bund"], pundle.info.description, Bundle
 
-group.commands.add ["BundleInstall", "bundi"], pundle.info.description, BundleInstall
-group.commands.add ["BundleUpdate", "bundu"], pundle.info.description, BundleUpdate,
-  literal: 0
-  completer: pundle.completer
+group.commands.add ["BundleInstall", "bundi"], pundle.info.description, BundleInstall,
+  bang: true
+  completer: (context, args)-> pundle.completer(context,args) if args.bang
 
 group.commands.add ["BundleRemove", "bundr"], pundle.info.description, BundleRemove,
   literal: 0

@@ -25,9 +25,8 @@ Commands
 
 
 ```vim
- " :BundleInstall              - install bundles
- " :BundleUpdate               - update bundles
- " :BundleRemove bundleName    - remove bundle
+ " :BundleInstall(!)          - install(update) bundles
+ " :BundleRemove bundleName   - remove bundle
 ```
 
 
